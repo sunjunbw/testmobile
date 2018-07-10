@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="hammer.js"></script>
+	<style>
+	.box{
+			width: 300px;
+			height:300px;
+			background: #ccc;
+			position: absolute;
+		
+		}
+	</style>
+	
+</head>
+<body>
+<div id="box" class="box"></div>
+<script>
+var oDiv = document.getElementById("box");
+	var hammertime = new Hammer(oDiv);
+	hammertime.get('pinch').set({ enable: true });
+	hammertime.on('pan', function(ev) {
+		console.log('pan')
+	});
+	var sc=1;
+	hammertime.on("pinchin",function(){
+		    if(sc>0.1){
+
+		     sc-=0.03;
+		     oDiv.style.webkitTransform="scale("+sc+")";
+		    }
+			
+	})
+	hammertime.on("pinchout",function(){
+		    if(sc<3){
+
+		     sc+=0.03;
+		     oDiv.style.webkitTransform="scale("+sc+")";
+		    }
+			
+	})
+</script>
+</body>
+</html>

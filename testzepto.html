@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="zepto.js"></script>
+	<script src="event.js"></script>
+	<script src="touch.js"></script>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style>
+        html,body{
+        	width:100%;
+        	height: 100%;
+        }
+        body{
+        	margin:0;
+        }
+        ul{
+        	list-style:none;
+        	margin:0;
+        	padding:0;
+        }
+		.box{
+			width:100%;
+			height: 300px;
+			overflow: hidden;
+		}
+		.box ul{
+				width: 400%;
+		}
+		.box ul li{
+			  float:left;
+			  width:25%;
+			  height:300px;
+		}
+		.box ul li:nth-child(1){
+			background: red;
+		}
+		.box ul li:nth-child(2){
+			background: green;
+		}
+		.box ul li:nth-child(3){
+			background: blue;
+		}
+		.box ul li:nth-child(4){
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" class="box">
+	   <ul class="list">
+			<li>111</li>
+			<li>222</li>
+			<li>333</li>
+			<li>444</li>
+	   </ul>
+	</div>
+   <script>
+      //手势识别
+      $(function(){
+      	 var i=0;
+      	 $("#box").on("swipeLeft",function(){
+      	 	i++;
+      	 	console.log(i)
+      	 	$(".list").css("transform","translate3d(-"+i*25+"%,0,0)");
+      	 })
+      	 $("#box").on("swipeRight",function(){
+      	 	i--;
+      	 	console.log(i)
+      	 	$(".list").css("transform","translate3d(-"+i*25+"%,0,0)");
+      	 })
+      })
+   </script>
+</body>
+</html>
